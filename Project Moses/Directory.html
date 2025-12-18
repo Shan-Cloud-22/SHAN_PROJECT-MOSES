@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emergency Directory</title>
+    
+    <link rel="stylesheet" href="Directory.css"> 
+
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <button class="back-button" onclick="goBack()">← Back to Main Page</button>
+            <div id="header-content">
+                <h1>Emergency Directory</h1>
+                <p class="description">Directory of essential service providers across the Province of Cavite for quick reference during normal operations or emergencies.</p>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        
+        <div id="search-form-container">
+            <h2>Find Services by Location</h2>
+            <form id="initial-search-form">
+                
+                <div class="form-group">
+                    <label for="municipality">City / Municipality <span style="color: red;">*</span></label>
+                    <select id="municipality" required>
+                        <option value="">-- Select City --</option>
+                        </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="service-type-initial">Service (Optional)</label>
+                    <select id="service-type-initial">
+                        <option value="">-- Any Department --</option>
+                        </select>
+                </div>
+
+                <button type="submit" id="submit-btn">Search Services</button>
+                <button type="button" id="clear-btn" onclick="document.getElementById('initial-search-form').reset();">Clear</button>
+            </form>
+        </div>
+
+        <div id="results-container">
+            <p class="status-message">Please use the form above to search for essential service contacts in your municipality.</p>
+        </div>
+
+    </div>
+
+<script src="Directory.js"></script>
+
+<script>
+    function goBack() {
+        // Change 'index.html' to the actual filename of your main page/menu
+        window.location.href = 'home.html'; 
+    }
+</script>
+<script>
+(function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="zs4YG_wfj-uDAcShcPo8g";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
+</script>
+</body>
+</html>

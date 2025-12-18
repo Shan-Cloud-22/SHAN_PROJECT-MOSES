@@ -1,0 +1,224 @@
+body {
+    --primary-green: #388E3C;
+    --secondary-green: #4CAF50;
+    --button-red: #D32F2F; 
+    --button-blue: #1976D2; 
+    --button-gmail: #EA4335; 
+    --background-light: #F8FDF9;
+    --card-bg: #FFFFFF;
+    --text-color: #333;
+    --shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+    --border-radius: 6px;
+
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 0.95em;
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-light);
+    color: var(--text-color);
+}
+
+/* --- Layout and Header styles remain the same --- */
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+header {
+    background-color: #d1fae5; 
+    padding: 20px 0;
+    text-align: center;
+    margin-bottom: 25px;
+    margin-top: 25px;
+    margin-left: 200px;
+    margin-right: 200px;
+}
+header .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.back-button {
+    background-color:  #1FAA59;
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-size: 0.9em; 
+    font-weight: 500;
+    transition: background-color 0.3s;
+    text-decoration: none;
+    align-self: flex-start;
+    margin-bottom: 5px;
+}
+.back-button:hover {
+    background-color: #1b5e20;
+}
+h1 {
+    color: var(--primary-green);
+    margin: 0;
+    margin-bottom: 20px;
+}
+h2 {
+    font-size: 1.5em;
+    color: var(--primary-green);
+    margin-top: 0;
+    margin-bottom: 50px;
+}
+p.description {
+    color:  #374151;
+    margin-top: 8px;
+    font-size: 0.95em;
+}
+#search-form-container {
+    background-color: var(--card-bg);
+    padding: 25px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    margin-bottom: 25px;
+}
+#initial-search-form {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 15px;
+    align-items: flex-end;
+}
+.form-group label {
+    font-weight: 600;
+    margin-bottom: 4px;
+    color: #555;
+}
+.form-group select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 0.9em; 
+}
+#submit-btn, #clear-btn {
+    padding: 8px 15px;
+    border-radius: 4px;
+    font-size: 1em; 
+    height: 38px;
+    background-color: var(--primary-green);
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+
+/* --- Results Grid and Flashcard Styles --- */
+#results-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    padding-bottom: 40px;
+}
+
+.flashcard {
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    transition: transform 0.2s;
+}
+
+.flashcard:hover {
+    transform: translateY(-2px);
+}
+
+.card-header-bg {
+    background: linear-gradient(135deg, var(--primary-green), #4CAF50); 
+    color: white;
+    padding: 15px;
+}
+
+.card-header-bg h3 {
+    margin: 0;
+    font-size: 1.3em;
+}
+
+.card-body {
+    padding: 15px;
+}
+
+.card-body p {
+    margin: 7px 0;
+    font-size: 0.9em;
+}
+
+.service-tag {
+    padding: 2px 6px;
+    font-size: 0.75em;
+}
+
+/* --- Contact Button Styles --- */
+.contact-group {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid #eee; 
+    display: flex; 
+    flex-direction: column;
+    gap: 8px; 
+}
+
+.contact-group a {
+    display: block; 
+    text-align: center;
+    color: white;
+    text-decoration: none;
+    padding: 8px;
+    border-radius: 4px;
+    font-size: 0.95em;
+    font-weight: 600;
+    transition: background-color 0.2s;
+}
+
+.phone-link {
+    background-color: var(--button-red);
+}
+
+.phone-link:hover {
+    background-color: #A52121;
+}
+
+.email-link.default-email {
+    background-color: var(--button-blue);
+}
+
+.email-link.default-email:hover {
+    background-color: #10599A;
+}
+
+.email-link.gmail-email {
+    background-color: var(--button-gmail);
+}
+
+.email-link.gmail-email:hover {
+    background-color: #C0372A;
+}
+
+/* --- Status Message Style Update for Clear Separation --- */
+.status-message {
+    padding: 25px 0 10px 0; 
+    margin-bottom: 20px; 
+    font-size: 1.1em;
+    border-bottom: 1px solid #eee;
+}
+
+.status-message {
+    text-align: center;
+}
+
+
+:root {
+    --button-blue: #1976D2; 
+}
+
+.email-link.universal-email {
+    background-color: var(--button-blue);
+}
+
+.email-link.universal-email:hover {
+    background-color: #10599A; 
+}

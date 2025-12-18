@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Project Moses – Emergency & Public Services Guide for Cavite</title>
+<link rel="stylesheet" href="ligtas-styles.css">
+
+<!-- Leaflet CSS -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<!-- MarkerCluster CSS -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" />
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css" />
+
+</head>
+<body>
+
+<!-- ========== NAVIGATION BAR ========== -->
+<header class="navbar">
+  <div class="navbar-container">
+    <div class="logo">
+      <img src="moses-profile.jpg" alt="Project Moses Logo" class="logo-image" />
+      <span class="logo-text">PROJECT MOSES</span>
+    </div>
+    <nav class="nav-menu">
+        <a href="#home" class="nav-link">Home</a>
+      <a href="Directory.html">
+  <button class="nav-button">Directory</button>
+</a>
+
+<div class="dropdown">
+  <button class="nav-button dropdown-btn">Provincial Directory</button>
+
+  <div class="dropdown-content">
+    <a href="Provincial Offices.html">Provincial Offices</a>
+    <a href="NGA.html">NGA’s</a>
+    <a href="NGO.html">NGO’s</a>
+  </div>
+</div>
+
+
+<a href="Disaster Guide.html">
+  <button class="nav-button">Disaster Guide</button>
+</a>
+<a href="Utilities & Services.html">
+  <button class="nav-button">Utilities & Services</button>
+</a>
+
+      <a href="#modal-about" class="nav-link">About Us</a>
+    </nav>
+  </div>
+</header>
+
+
+<!-- ========== HERO SECTION ========== -->
+ 
+<section class="hero" id="home" role="img" aria-label="Project Moses hero image">
+    <img class="hero-bg-img" src="HERO_SECTION.png" alt="Project Moses hero image">
+    <div class="hero-overlay"></div>
+    <div class="hero-container">
+        <div class="hero-buttons">
+            <a href="#services" class="cta-button primary-btn">Start Exploring</a>
+            <a href="Directory.html" class="cta-button secondary-btn">View Directory</a>
+        </div>
+        </div>
+    </img>
+</section>
+
+<!-- ========== ABOUT SECTION ========== -->
+<section class="about-section" id="about-intro">
+    <div class="container about-grid">
+        <div class="about-left">
+            <h2>What is Project Moses?</h2>
+            <p class="about-content">
+                <strong>Project Moses</strong> your creative  community trusted hub for emergencies and public service is a reliable platform that helps Caviteños stay safe and prepared. Instantly access verified hotlines, evacuation centers, and step-by-step safety tips, all organized by municipality. The platform is always up-to-date and easy to use, making essential emergency information accessible for everyone in Cavite.
+            </p>
+        </div>
+
+        <div class="about-right">
+            <h4>Who this helps</h4>
+            <p class="about-right-p">Project Moses is designed for Caviteños—residents, students, local communities, travelers, and anyone needing quick access to trusted emergency resources.</p>
+
+            <h4>Data & updates</h4>
+            <p class="about-right-p">We compile contacts and locations from local government and public sources. Information is reviewed regularly and shows the latest update when available.</p>
+
+            <h4>Privacy</h4>
+            <p class="about-right-p">Project Moses displays public service information only. We don't collect personal data on this page. For corrections or feedback, please use the contact links in the footer.</p>
+        </div>
+    </div>
+
+    <div class="about-cta-row">
+        <a href="#services" class="cta-button primary-btn about-cta">Explore Services</a>
+    </div>
+</section>
+
+<!-- ========== EMERGENCY REMINDER BAR ========== -->
+<section class="emergency-reminder">
+    <p>🚨 In case of emergency, contact your local authorities immediately or call <strong>911</strong>.</p>
+</section>
+
+<!-- ========== SERVICES PREVIEW (CARDS) ========== -->
+<section class="services-section" id="services">
+    <div class="container">
+        <h2>Our Services</h2>
+        <div class="services-grid">
+            <a href="Directory.html" class="service-card">
+                <div class="card-icon">📞</div>
+                <h3>Emergency Directory</h3>
+                <p>Find emergency hotlines per municipality.</p>
+                <span class="card-button">Go to Directory</span>
+            </a>
+            <a href="Provincial Offices.html" class="service-card">
+                <div class="card-icon">🏛️</div>
+                <h3>Provincial Offices</h3>
+                <p>Offices and hotlines in the provincial government.</p>
+                <span class="card-button">View Offices</span>
+            </a>
+            <a href="NGA.html" class="service-card">
+                <div class="card-icon">🏢</div>
+                <h3>NGA's in Cavite</h3>
+                <p>Directory of national government offices and their hotlines.</p>
+                <span class="card-button">View Agencies</span>
+            </a>
+            <a href="NGO.html" class="service-card">
+                <div class="card-icon">🏚️</div>
+                <h3>Accredited NGO's in Cavite</h3>
+                <p>List of accredited non-government groups and their contact hotlines.</p>
+                <span class="card-button">View NGO</span>
+            </a>
+            <a href="Disaster Guide.html" class="service-card">
+                <div class="card-icon">📚</div>
+                <h3>Disaster Guide</h3>
+                <p>Step-by-step instructions for each calamity.</p>
+                <span class="card-button">Read Guide</span>
+            </a>
+            <a href="Utilities & Services.html" class="service-card">
+                <div class="card-icon">⚡</div>
+                <h3>Utilities & Services</h3>
+                <p>Water, electricity, internet, waste management contacts.</p>
+                <span class="card-button">View Services</span>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ========== MAP SECTION (LEAFLET) ========== -->
+<section class="map-section" id="map-section">
+  <div class="container">
+    <h2>Disaster Map — Cavite</h2>
+
+    <div class="map-controls" role="group" aria-label="Map filters and controls">
+      <label><input type="checkbox" id="toggleSafe" checked> Safe Zones</label>
+      <label><input type="checkbox" id="toggleHospital" checked> Hospitals</label>
+      <label><input type="checkbox" id="toggleDisaster" checked> Disaster-prone Areas</label>
+
+      <label class="control-select">Disaster type:
+        <select id="disasterTypeSelect">
+          <option value="all">All</option>
+          <option value="Flood">Flood</option>
+          <option value="Typhoon">Typhoon</option>
+          <option value="Landslide">Landslide</option>
+          <option value="Earthquake">Earthquake</option>
+        </select>
+      </label>
+
+      <input type="search" id="mapSearch" placeholder="Search for place or name" aria-label="Search map">
+      <button id="searchBtn" class="cta-button secondary-btn">Search</button>
+      <button id="loadHospitalsBtn" class="cta-button secondary-btn" type="button">Load Hospitals in View</button>
+      <span id="hospitalCount" style="margin-left:8px; color:#333; font-size:14px;"></span>
+
+      <button id="focusPhilippines" class="cta-button secondary-btn" title="Center on Philippines">Center Philippines</button>
+      <button id="locateBtn" class="cta-button secondary-btn" type="button">Find My Location</button>
+    </div>
+
+    <div id="map" aria-label="Interactive map showing safe zones and disaster-prone areas"></div>
+    <div id="searchResults" class="search-results" role="listbox" aria-label="Search results" hidden></div>
+
+    <div class="map-legend" aria-hidden="false">
+      <span class="legend-item"><span class="legend-color safe"></span> Safe Zone</span>
+      <span class="legend-item"><span class="legend-color hospital"></span> Hospital</span>
+      <span class="legend-item"><span class="legend-color danger"></span> Disaster-prone</span>
+    </div>
+  </div>
+</section>
+
+
+<!-- ========== HOW IT WORKS SECTION ========== -->
+<section class="how-it-works" id="how-it-works">
+    <div class="container">
+        <h2>How Project Moses Works</h2>
+        <p class="how-it-works-subtitle">Follow these simple steps to quickly access emergency contacts, Goverment and non Goverment hotlines, and disaster information in your municipality.</p>
+        
+        <div class="how-steps-grid">
+            <div class="how-step">
+                <div class="how-step-number">1</div>
+                <h4>Choose Municipality</h4>
+                <p>Select your town or city from the Directory to see local emergency resources.</p>
+            </div>
+            <div class="how-step">
+                <div class="how-step-number">2</div>
+                <h4>Find Hotlines</h4>
+                <p>Access verified contact numbers for MDRRMO, BFP, PNP, hospitals and barangay officials.</p>
+            </div>
+            <div class="how-step">
+                <div class="how-step-number">3</div>
+                <h4>View Pronvincial Directory</h4>
+                <p>View the directory of the Province of Cavite. This contains contact hotline lists of government and non-government offices.</p>
+            </div>
+            <div class="how-step">
+                <div class="how-step-number">4</div>
+                <h4>Check Guides</h4>
+                <p>Open the Disaster Guide for Before, During, and After steps specific to the calamity.</p>
+            </div>
+            <div class="how-step">
+                <div class="how-step-number">5</div>
+                <h4>Contact Services</h4>
+                <p>Find utilities, medical facilities, and other public services in your area.</p>
+            </div>
+            <div class="how-step">
+                <div class="how-step-number">6</div>
+                <h4>Share & Update</h4>
+                <p>Suggest corrections or new locations via the contact links so information stays current.</p>
+            </div>
+        </div>
+
+        <div class="how-emergency">
+    <p>🚨 Need urgent help? Call <strong>911</strong> or your local MDRRMO now.</p>
+    <a href="Directory.html" class="cta-button primary-btn">Find Help Now</a>
+</div>
+
+    </div>
+</section>
+
+<!-- ========== WHY THIS MATTERS SECTION ========== -->
+<section class="why-matters">
+    <div class="container">
+        <h2>Why This Matters</h2>
+        <p class="why-matters-subtitle">The Philippines is prone to various calamities. Quick access to emergency information can save lives.</p>
+        
+        <div class="calamity-grid">
+            <div class="calamity-card">
+                <div class="calamity-icon">🌊</div>
+                <h3>Floods & Typhoons</h3>
+                <p>Heavy rainfall and strong winds can cause devastating floods. Know evacuation routes and emergency contacts in advance.</p>
+                <div class="calamity-stat">18-20 typhoons yearly</div>
+            </div>
+            <div class="calamity-card">
+                <div class="calamity-icon">🔥</div>
+                <h3>Fires & Explosions</h3>
+                <p>Fires can spread rapidly in residential and commercial areas. Have emergency escape plans and contact firefighting services immediately.</p>
+                <div class="calamity-stat">Hotline: 160 (BFP)</div>
+            </div>
+            <div class="calamity-card">
+                <div class="calamity-icon">📍</div>
+                <h3>Earthquakes</h3>
+                <p>Cavite sits near fault lines. Earthquakes can cause structural damage and injuries. Know safe spots and emergency procedures.</p>
+                <div class="calamity-stat">Zone: High Risk</div>
+            </div>
+            <div class="calamity-card">
+                <div class="calamity-icon">⛈️</div>
+                <h3>Severe Weather</h3>
+                <p>Landslides, typhoons, and extreme heat pose serious threats. Stay informed and prepared with weather alerts.</p>
+                <div class="calamity-stat">Real-time updates</div>
+            </div>
+        </div>
+
+        <div class="why-matters-content">
+            <p><strong>Project Moses makes emergency preparedness simple.</strong> We organize critical information so you can access help instantly when every second counts.</p>
+        </div>
+    </div>
+</section>
+<section class="directory-section">
+    <h2>National Emergency Hotlines</h2>
+
+    <div class="services-container">
+
+        <a class="service-card">
+            <h3>National Emergency Hotline</h3>
+            <p>911</p>
+        </a>
+
+        <a class="service-card">
+            <h3>Poison Control Center</h3>
+            <p>(02) 771-6000</p>
+        </a>
+
+        <a class="service-card">
+            <h3>National Suicide Prevention Hotline</h3>
+            <p>1-800-999-2365</p>
+        </a>
+
+        <a class="service-card">
+            <h3>Department of Health (DOH)</h3>
+            <p>(02) 651-7800</p>
+        </a>
+
+        <a class="service-card">
+            <h3>NDRRMC (National)</h3>
+            <p>(02) 8911-5061</p>
+        </a>
+
+        <a class="service-card">
+            <h3>PDRRMO Cavite</h3>
+            <p>(046) 414-0611</p>
+        </a>
+
+        <a class="service-card">
+            <h3>Philippine Coast Guard (PCG)</h3>
+            <p>123</p>
+        </a>
+
+        <a class="service-card">
+            <h3>Bureau of Fire Protection (BFP)</h3>
+            <p>(02) 8426-0219</p>
+        </a>
+
+        <a class="service-card">
+            <h3>Philippine National Police (PNP)</h3>
+            <p>117</p>
+        </a>
+
+    </div>
+</section>
+
+<!-- About Modal -->
+<div id="modal-about" class="modal">
+  <div class="modal-content">
+    <a href="#home" class="modal-close">&times;</a>
+    <!-- ========== PAGE 6: ABOUT US / CONTACT ========== -->
+<div id="about" class="page">
+
+    <!-- ===== CONTACT FORM ===== -->
+    <section class="guide-section">
+        <div class="container">
+
+            <h2 style="color:#1FAA59; text-align:center;">About Us</h2>
+            <p class="about-desc">
+                Have suggestions or recommendations to improve <strong>Project Moses</strong>?
+                Leave us a message below. Your feedback helps make our community safer.
+            </p>
+
+            <div class="form-container">
+
+                <form id="contactForm">
+
+                    <div class="form-group">
+                        <label for="contactName">Your Name *</label>
+                        <input type="text" id="contactName" name="contactName" placeholder="Enter your full name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="contactEmail">Your Email *</label>
+                        <input type="email" id="contactEmail" name="contactEmail" placeholder="Enter your email address" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="contactType">Type of Message *</label>
+                        <select id="contactType" name="contactType" required>
+                            <option value="" disabled selected>Choose an option</option>
+                            <option value="Suggestion">Suggestion</option>
+                            <option value="Report">Report an Issue</option>
+                            <option value="Correction">Correction of Information</option>
+                            <option value="Feedback">General Feedback</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="contactMessage">Message *</label>
+                        <textarea id="contactMessage" name="contactMessage" placeholder="Type your message here..." rows="6" required></textarea>
+                    </div>
+
+                    <div class="form-buttons">
+                        <button type="submit" class="submit-btn">Send Message</button>
+                        <button type="reset" class="reset-btn">Clear</button>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== PROJECT INFO ===== -->
+    <section class="guide-section project-info">
+        <div class="container">
+            <h2 style="color:#1FAA59;">About Project Moses</h2>
+            <p>
+                <strong>Project Moses</strong> is a website developed as a final project 
+                for Introduction to Computing. It provides the people of Cavite with fast access 
+                to emergency contacts, government services, and disaster preparedness information. 
+                This platform was designed to support disaster awareness and community safety.
+            </p>
+        </div>
+    </section>
+
+    <!-- ===== DEVELOPER INFO ===== -->
+<section class="guide-section developer-section">
+    <div class="container">
+        <h2 style="color: #1FAA59; text-align: center;">Founder of Project Moses</h2>
+        <div class="developer-card">
+            <!-- Picture -->
+            <div class="avatar">
+                <img src="profile11111.jpg" alt="Shan Barraca" class="developer-photo">
+            </div>
+
+            <h3>Shan Barraca</h3>
+            <p><strong>Program:</strong> BS Computer Science</p>
+            <p><strong>School:</strong> Cavite State University – Indang Main Campus</p>
+            <p><strong>Skills:</strong> Web Development, UI/UX Design, Funnel Design and Automation</p>
+            <p class="quote">“Give me internship… and maybe ₱100k too.”</p>
+        </div>
+    </div>
+</section>
+
+
+</div>
+
+  </div>
+</div>
+
+<!-- ========== FOOTER ========== -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Project Moses</h4>
+                <p>Your centralized emergency and public service guide for Cavite.</p>
+            </div>
+
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <a href="#home" class="nav-link">Home</a>
+                    <li><a href="Directory.html">Directory</a></li>
+                    <li><a href="Provincial Offices.html">Provincial Offices</a></li>
+                    <li><a href="Disaster Guide.html">Disaster Guide</a></li>
+                    <li><a href="Utilities & Services.html">Utilities & Services</a></li>
+                    <li><a href="#modal-about">About Us</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Contact & Info</h4>
+                <p>Emergency: <strong>911</strong></p>
+                <p>For inquiries and feedback</p>
+            </div>
+        </div>
+
+<!-- Leaflet JS -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<!-- MarkerCluster JS -->
+<script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster-src.js"></script>
+
+<script>
+// Nationwide demo data (Philippines) — green = safe, yellow = hospital, red = disaster-prone
+const safeZones = [
+  { name: "Community Center Dasmariñas", coords: [14.3240, 120.9480], type: "Community Center", province: 'Cavite' },
+  { name: "Iloilo Community Center", coords: [10.7202, 122.5621], type: "Community Center", province: 'Iloilo' },
+  { name: "Vigan Community Center", coords: [17.5749, 120.3868], type: "Community Center", province: 'Ilocos Sur' }
+];
+
+const hospitals = [
+  { name: "Imus Hospital", coords: [14.4143, 120.9360], type: "Hospital", province: 'Cavite' },
+  { name: "Cavite City Hospital", coords: [14.4820, 120.9111], type: "Hospital", province: 'Cavite' },
+  { name: "Manila General Hospital", coords: [14.5810, 120.9766], type: "Hospital", province: 'Metro Manila' },
+  { name: "Cebu City Hospital", coords: [10.3157, 123.8854], type: "Hospital", province: 'Cebu' }
+];
+
+const disasterZones = [
+  { name: "Flood-prone Area Bacoor", coords: [14.4600, 120.9770], type: "Flood", province: 'Cavite' },
+  { name: "Typhoon-prone Area Eastern Samar", coords: [11.1036, 125.1936], type: "Typhoon", province: 'Eastern Samar' },
+  { name: "Landslide-prone Area Baguio", coords: [16.4023, 120.5960], type: "Landslide", province: 'Benguet' },
+  { name: "Flood-prone Area Ilocos Norte", coords: [18.2208, 121.5514], type: "Flood", province: 'Ilocos Norte' },
+  { name: "Earthquake-prone Area Mindanao", coords: [8.4542, 124.6319], type: "Earthquake", province: 'Mindanao' }
+];
+
+// Initialize map
+document.addEventListener('DOMContentLoaded', function () {
+  const philippinesCenter = [12.8797, 121.7740]; // center of PH
+  const map = L.map('map', { zoomControl: true }).setView(philippinesCenter, 5);
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap contributors'
+  }).addTo(map);
+
+  // Colored marker icons
+  const greenIcon = new L.Icon({
+    iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
+    shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-shadow.png',
+    iconSize: [25, 41], iconAnchor: [12, 41], popupAnchor: [1, -34], shadowSize: [41, 41]
+  });
+
+  const yellowIcon = new L.Icon({
+    iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-yellow.png',
+    shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-shadow.png',
+    iconSize: [25, 41], iconAnchor: [12, 41], popupAnchor: [1, -34], shadowSize: [41, 41]
+  });
+
+  const redIcon = new L.Icon({
+    iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
+    shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-shadow.png',
+    iconSize: [25, 41], iconAnchor: [12, 41], popupAnchor: [1, -34], shadowSize: [41, 41]
+  });
+
+  // Clustering groups
+  const safeCluster = L.markerClusterGroup();
+  const hospitalCluster = L.markerClusterGroup();
+  const disasterCluster = L.markerClusterGroup();
+
+  // Disaster tips
+  const disasterTips = {
+    Flood: 'Move to higher ground; avoid walking or driving through floodwater.',
+    Typhoon: 'Secure loose objects and shelter in a sturdy building; expect strong winds.',
+    Landslide: 'Stay away from slopes and report unusual ground movement immediately.',
+    Earthquake: 'Drop, Cover, and Hold On; stay away from windows.'
+  };
+
+  // Create & store markers
+  const safeMarkers = [];
+  const hospitalMarkers = [];
+  const disasterMarkers = [];
+
+  function createMarkers() {
+    safeZones.forEach(z => {
+      const m = L.marker(z.coords, { icon: greenIcon }).bindPopup(`<strong>${z.name}</strong><br><em>${z.type}</em>`).bindTooltip(z.name);
+      m.data = z; safeMarkers.push(m);
+    });
+
+    hospitals.forEach(h => {
+      const m = L.marker(h.coords, { icon: yellowIcon }).bindPopup(`<strong>${h.name}</strong><br><em>${h.type}</em>`).bindTooltip(h.name);
+      m.data = h; hospitalMarkers.push(m);
+    });
+
+    disasterZones.forEach(z => {
+      const tip = disasterTips[z.type] || '';
+      const m = L.marker(z.coords, { icon: redIcon }).bindPopup(`<strong>${z.name}</strong><br><em>${z.type}</em><br><small>${tip}</small>`).bindTooltip(z.type);
+      m.data = z; disasterMarkers.push(m);
+    });
+  }
+
+  createMarkers();
+
+  function updateClusters() {
+    safeCluster.clearLayers(); hospitalCluster.clearLayers(); disasterCluster.clearLayers();
+    const showSafe = document.getElementById('toggleSafe').checked;
+    const showHospital = document.getElementById('toggleHospital').checked;
+    const showDisaster = document.getElementById('toggleDisaster').checked;
+    const disasterFilter = document.getElementById('disasterTypeSelect').value;
+
+    if (showSafe) safeMarkers.forEach(m => safeCluster.addLayer(m));
+    if (showHospital) hospitalMarkers.forEach(m => hospitalCluster.addLayer(m));
+    disasterMarkers.forEach(m => {
+      if (showDisaster && (disasterFilter === 'all' || m.data.type === disasterFilter)) disasterCluster.addLayer(m);
+    });
+
+    // toggle layers
+    if (safeCluster.getLayers().length) map.addLayer(safeCluster); else map.removeLayer(safeCluster);
+    if (hospitalCluster.getLayers().length) map.addLayer(hospitalCluster); else map.removeLayer(hospitalCluster);
+    if (disasterCluster.getLayers().length) map.addLayer(disasterCluster); else map.removeLayer(disasterCluster);
+  }
+
+  // Add click behavior to center & open popup
+  const allMarkers = () => [...safeMarkers, ...hospitalMarkers, ...disasterMarkers];
+  allMarkers().forEach(m => {
+    m.on('click', () => { map.setView(m.getLatLng(), 12); m.openPopup(); });
+  });
+
+  // Search by name or province
+  function searchMap(q) {
+    const ql = q.trim().toLowerCase(); if(!ql) return;
+    const found = allMarkers().find(m => (m.data.name && m.data.name.toLowerCase().includes(ql)) || (m.data.province && m.data.province.toLowerCase().includes(ql)));
+    if (found) { map.setView(found.getLatLng(), 12); found.openPopup(); } else alert('No match found. Try municipality, province, or place name.');
+  }
+
+  // Search button and Enter
+  document.getElementById('searchBtn').addEventListener('click', () => nominatimSearch(document.getElementById('mapSearch').value));
+  document.getElementById('mapSearch').addEventListener('keydown', (e) => { if (e.key === 'Enter') nominatimSearch(e.target.value); });
+
+  // Load hospitals in current view using Overpass
+  document.getElementById('loadHospitalsBtn').addEventListener('click', () => loadHospitalsInView());
+
+  // Control listeners
+  ['toggleSafe','toggleHospital','toggleDisaster','disasterTypeSelect'].forEach(id => document.getElementById(id).addEventListener('change', updateClusters));
+
+  document.getElementById('focusPhilippines').addEventListener('click', () => map.setView(philippinesCenter, 5));
+
+  document.getElementById('locateBtn').addEventListener('click', () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((pos) => { const latlng = [pos.coords.latitude, pos.coords.longitude]; L.marker(latlng).addTo(map).bindPopup('You are here').openPopup(); map.setView(latlng, 11); }, () => alert('Unable to get your location.'));
+    } else alert('Geolocation not supported in this browser.');
+  });
+
+  // Overpass (load hospitals in view)
+  async function loadHospitalsInView() {
+    const b = map.getBounds();
+    const s = b.getSouth(), w = b.getWest(), n = b.getNorth(), e = b.getEast();
+    const query = `
+      [out:json][timeout:25];
+      (
+        node["amenity"="hospital"](${s},${w},${n},${e});
+        way["amenity"="hospital"](${s},${w},${n},${e});
+        relation["amenity"="hospital"](${s},${w},${n},${e});
+      );
+      out center;`;
+
+    try {
+      document.getElementById('loadHospitalsBtn').textContent = 'Loading...';
+      const res = await fetch('https://overpass-api.de/api/interpreter', { method: 'POST', body: query, headers: { 'Content-Type': 'application/x-www-form-urlencoded' } });
+      const data = await res.json();
+      let count = 0;
+      data.elements.forEach(el => {
+        const lat = el.lat || (el.center && el.center.lat);
+        const lon = el.lon || (el.center && el.center.lon);
+        if (!lat || !lon) return;
+        // check duplicates by osm id
+        if (hospitalMarkers.some(m => m.data && m.data.osm_id === el.id)) return;
+        const name = (el.tags && el.tags.name) ? el.tags.name : 'Hospital';
+        const m = L.marker([lat, lon], { icon: yellowIcon }).bindPopup(`<strong>${name}</strong><br><em>Hospital</em><br><a class="directions-btn" href="https://www.google.com/maps/dir/?api=1&destination=${lat},${lon}" target="_blank" rel="noopener">Get directions</a>`);
+        m.data = { name, type: 'Hospital', province: (el.tags && (el.tags['addr:province'] || el.tags['addr:state'])) || '', osm_id: el.id };
+        hospitalMarkers.push(m);
+        hospitalCluster.addLayer(m);
+        count++;
+      });
+
+      updateClusters();
+      document.getElementById('hospitalCount').textContent = `${count} hospitals loaded`; 
+    } catch (err) {
+      alert('Error loading hospitals from OSM. Try again later.');
+      console.error(err);
+    } finally {
+      document.getElementById('loadHospitalsBtn').textContent = 'Load Hospitals in View';
+    }
+  }
+
+  // Nominatim search (shows results list)
+  let searchLayer = L.layerGroup();
+  async function nominatimSearch(q) {
+    const query = q.trim();
+    const resultsDiv = document.getElementById('searchResults');
+    resultsDiv.innerHTML = '';
+    if (!query) { resultsDiv.hidden = true; return; }
+    resultsDiv.hidden = false;
+
+    const url = `https://nominatim.openstreetmap.org/search?format=json&limit=8&countrycodes=ph&q=${encodeURIComponent(query)}&addressdetails=1&extratags=1&email=webmaster@example.com`;
+    try {
+      const res = await fetch(url);
+      const items = await res.json();
+      if (!items.length) { resultsDiv.innerHTML = '<div class="search-result">No results</div>'; return; }
+      items.forEach(it => {
+        const display = it.display_name;
+        const isHospital = (it.type && it.type.toLowerCase() === 'hospital') || (it.class && it.class === 'amenity' && it.type === 'hospital') || display.toLowerCase().includes('hospital');
+        const div = document.createElement('div');
+        div.className = 'search-result';
+        div.tabIndex = 0;
+        div.innerHTML = `<div><h4>${it.display_name.split(',')[0]}</h4><p>${it.display_name}</p></div><div>${isHospital?'<strong style="color:#b45309">Hospital</strong>':''}</div>`;
+        div.addEventListener('click', () => {
+          // clear previous search markers
+          searchLayer.clearLayers();
+          const lat = parseFloat(it.lat), lon = parseFloat(it.lon);
+          const icon = isHospital ? yellowIcon : greenIcon;
+          const mark = L.marker([lat, lon], { icon }).addTo(searchLayer).bindPopup(`<strong>${it.display_name.split(',')[0]}</strong><br><small>${it.display_name}</small><br><a class="directions-btn" href="https://www.google.com/maps/dir/?api=1&destination=${lat},${lon}" target="_blank" rel="noopener">Get directions</a>`);
+          mark.addTo(map).openPopup();
+          searchLayer.addTo(map);
+          map.setView([lat, lon], 14);
+          resultsDiv.hidden = true;
+        });
+        resultsDiv.appendChild(div);
+      });
+    } catch (err) {
+      console.error(err);
+      resultsDiv.innerHTML = '<div class="search-result">Error searching. Try again.</div>';
+    }
+  }
+
+  // initialize
+  updateClusters();
+
+});
+</script>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 Project Moses</p>
+            <p>Developed by Shan Barraca</p>
+            <p>For educational purposes only</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+(function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="zs4YG_wfj-uDAcShcPo8g";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
+</script>
+
+</body>
+</html>

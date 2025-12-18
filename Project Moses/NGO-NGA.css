@@ -1,0 +1,150 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #f5f7fa 0%, #e8f1f9 100%);
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Directory header container */
+.directory-header {
+    background-color: #e0f2fe;
+    padding: 20px 20px 30px;
+    margin-bottom: 30px;
+    margin-top: 100px;
+    border-radius: 16px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+/* Directory Header */
+.directory-header {
+    max-width: 1250px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    text-align: center;
+    position: relative;
+}
+
+.header-wrapper {
+    margin-top: 40px;
+}
+
+/* Back Button */
+.back-button {
+    display: inline-block;
+    background: #0284c7;
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    cursor: pointer;
+    margin-bottom: 25px;
+    transition: all 0.3s ease;
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    font-size: 0.95rem;
+}
+
+.back-button:hover {
+    background: #0c4a6e;
+    transform: translateX(-5px);
+}
+
+/* Directory Title */
+.directory-title {
+    font-size: 2.8rem;
+    color: #0369a1;
+    margin: 0 auto 15px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    text-align: center;
+}
+
+/* Directory Description */
+.directory-description {
+    font-size: 1rem;
+    color: #2c2d2e
+    max-width: 800px;
+    margin: 0 auto;
+    font-weight: 400;
+    line-height: 1.6;
+}
+
+/* Main Container */
+.content-wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    padding: 40px 20px;
+    max-width: calc(3 * 400px + 50px);
+    margin: 0 auto;
+}
+
+/* Flashcard Container */
+.flashcard {
+    background: white;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0, 119, 182, 0.08);
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    border: 1px solid #e8f1f9;
+}
+
+.flashcard:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 15px 35px rgba(0, 119, 182, 0.18);
+}
+
+/* Flashcard Title Section */
+.flashcard > div:first-child {
+    background: #00a8e8;
+    padding: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100px;
+}
+
+.flashcard-title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: white;
+    text-align: center;
+    line-height: 1.4;
+    letter-spacing: 0.3px;
+}
+
+/* Contact Info Section */
+.contact-info {
+    padding: 20px;
+    flex-grow: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.contact-info p {
+    font-size: 0.9rem;
+    color: #555;
+    line-height: 1.5;
+}
+
+.contact-info p:first-child {
+    font-weight: 600;
+    color: #0077b6;
+    margin-bottom: 5px;
+}

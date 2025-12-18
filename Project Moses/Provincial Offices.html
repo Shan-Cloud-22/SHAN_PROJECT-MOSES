@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cavite Provincial Offices</title>
+  
+    <style>
+        :root {
+            font-family: 'Inter', sans-serif;
+            --color-blue-900: #1e40af;
+            --color-blue-500: #3b82f6;
+            --color-blue-200: #bfdbfe;
+            --color-blue-100: #dbeafe;
+            --color-green-800: #065f46;
+            --color-green-200: #a7f3d0;
+            --color-green-100: #dcfce7;
+            --color-gray-100: #f0f4f8;
+            --color-gray-50: #f9fafb;
+            --color-text-dark: #1f2937;
+            --color-text-light: #4b5563;
+        }
+
+        /* Base Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--color-gray-100); 
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+
+       /* Main content wrappers */
+        .header-wrapper, .directory-wrapper {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 30px;
+            margin-top: 40px;
+
+        }
+
+        /* Directory Header */
+        .directory-header {
+        max-width: calc(3 * 400px + 50px);
+        margin: 0 auto;
+        padding: 40px 20px;
+        text-align: center;
+        position: relative;
+}
+
+
+        /* Back button style */
+        .back-button {
+            background-color: #0284c7;
+            color: white;
+            padding: 8px 16px;
+            font-size: 0.9em;
+            border: none;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: background-color 0.3s, transform 0.1s;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Back button hover effect */
+        .back-button:hover {
+            background-color: #0c4a6e;
+            transform: translateY(-1px);
+        }
+
+        /* Directory header container */
+        .directory-header {
+            background-color: #e0f2fe;
+            padding: 20px 20px 30px;
+            margin-bottom: 30px;
+            border-radius: 16px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        /* Main title style */
+        .directory-header h2 {
+            font-size: 2.2em;
+            font-weight: 800;
+            margin: 0 auto 0.5rem;
+            color: #0369a1;
+            width: 100%;
+        }
+
+        /* Header description style */
+        .directory-header p {
+            font-size: 1em;
+            color: #2c2d2e;
+            margin: 0.5rem auto 0;
+            max-width: 800px;
+        }
+
+        /* Section title style */
+        .section-title {
+            font-size: 1.8em;
+            font-weight: 700;
+            color: #1f2937;
+            margin: 40px 0 20px;
+            border-bottom: 3px solid #e5e7eb;
+            padding-bottom: 5px;
+        }
+
+        /* Flashcard Grid Layout */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        /* Individual Office Card */
+        .office-card {
+            background: white;
+            border-radius: 1rem; /* rounded-xl */
+            padding: 1.5rem;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border-top: 4px solid var(--color-blue-500); 
+            transition: box-shadow 0.2s;
+        }
+        .office-card:hover {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+        }
+
+        .office-card-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        .office-card-title {
+            font-size: 1.125rem; 
+            font-weight: 700;
+            color: var(--color-text-dark);
+            margin-bottom: 1rem;
+        }
+
+        /* Contact Info Block */
+        .contact-info p {
+            font-size: 0.95rem;
+            color: var(--color-text-light);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            text-align: center;
+        }
+       
+        /* Contact Buttons */
+        .contact-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.5rem 1rem;
+            margin-top: 0.5rem;
+            border-radius: 0.5rem; 
+            font-weight: 600;
+            text-align: center;
+            transition: background-color 0.2s, box-shadow 0.2s;
+            text-decoration: none; 
+            color: inherit; 
+            font-size: 0.875rem; 
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        /* Light Blue Button for Telephone (tel-button) */
+        .tel-button {
+            background-color: var(--color-blue-100); 
+            color: var(--color-blue-900); 
+        }
+        .tel-button:hover {
+            background-color: var(--color-blue-200);
+        }
+
+        .email-button {
+            background-color: var(--color-green-100); 
+            color: var(--color-green-800); 
+        }
+        .email-button:hover {
+            background-color: var(--color-green-200); 
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="header-wrapper">
+        <div class="directory-header">
+            <button class="back-button" onclick="goBack()">← Back to Main Page</button>
+            
+            <h2 class="text-3xl font-extrabold mb-2">PROVINCIAL OFFICES DIRECTORY</h2>
+            <p class="text-sm opacity-90">A comprehensive directory of the Provincial Government Offices in Cavite, including contact numbers, locations, and key personnel for quick reference.</p>
+        </div>
+    </div>
+
+    <div class="directory-wrapper">
+
+        <!-- SECTION I: Executive Leadership & Audit -->
+        <h3 class="section-title">I. Executive Leadership & Audit</h3>
+        <div class="card-grid">
+
+            <div class="office-card">
+                <div>
+                    <div class="office-card-icon">👑</div>
+                    <div class="office-card-title">Office of the Provincial Governor</div>
+                </div>
+                <div class="contact-info">
+                    <p><span class="label-icon">🏢</span> Provincial Capitol Compound, Trece Martires City</p>
+                    <!-- Phone number wrapped in a clickable light blue button -->
+                    <a href="tel:0464192311" class="contact-button tel-button">
+                        <span class="label-icon">📞</span> (046) 419-2311
+                    </a>
+                </div>
+            </div>
+
+            <div class="office-card">
+                <div>
+                    <div class="office-card-icon">📢</div>
+                    <div class="office-card-title">Office of the Provincial Vice Governor</div>
+                </div>
+                <div class="contact-info">
+                    <p><span class="label-icon">🏢</span> 2/F Legislative Building, Trece Martires City</p>
+                    <!-- Phone numbers wrapped in a clickable light blue button -->
+                    <a href="tel:0464190282" class="contact-button tel-button">
+                        <span class="label-icon">📞</span> (046) 419-0282 / 419-0217
+                    </a>
+                </div>
+            </div>
+
+            <div class="office-card">
+                <div>
+                    <div class="office-card-icon">⚙️</div>
+                    <div class="office-card-title">Office of the Provincial Administrator</div>
+                </div>
+                <div class="contact-info">
+                    <p><span class="label-icon">🏢</span> Provincial Capitol Building, Trece Martires City</p>
+                    <!-- Phone number with extension wrapped in a clickable light blue button -->
+                    <a href="tel:0464190494,,110" class="contact-button tel-button">
+                        <span class="label-icon">📞</span> (046) 419-0494 / loc. 110
+                    </a>
+                </div>
+            </div>
+
+            <div class="office-card">
+                <div>
+                    <div class="office-card-icon">🤝</div>
+                    <div class="office-card-title">Provincial Administrator for Community Affairs</div>
+                </div>
+                <div class="contact-info">
+                    <p><span class="label-icon">🏢</span> Provincial Capitol Building, Trece Martires City</p>
+                    <p><span class="label-icon">📞</span> (Contact details N/A)</p>
+                </div>
+            </div>
+
+            <div class="office-card">
+                <div>
+                    <div class="office-card-icon">🔎</div>
+                    <div class="office-card-title">OPG - Internal Audit Unit</div>
+                </div>
+                <div class="contact-info">
+                    <p><span class="label-icon">🏢</span> Provincial Capitol Building, Trece Martires City</p>
+                    <p><span class="label-icon">📞</span> (Contact details N/A)</p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- SECTION II: Legislative, Legal & Governance -->
+        <h3 class="section-title">II. Legislative, Legal & Governance</h3>
+        <div class="card-grid">
+
+            <div class="office-card">
+                <div>
+                    <div class="office-card-icon">🔨</div>
+                    <div class="office-card-title">Office of the Sangguniang Panlalawigan</div>
+                </div>
+                <div class="contact-info">
+                    <p><span class="label-icon">🏢</span> Legislative Building, Trece Martires City</p>
+                    <!-- Phone numbers/loc wrapped in a clickable light blue button -->
+                    <a href="tel:0464191919,,140" class="contact-button tel-button">
+                        <span class="label-icon">📞</span> (046) 419-1919 loc. 140 / 423-3895
+                    </a>
+                </div>
+            </div>
+
+            <div class="office-card">
+                <div>
+                    <div class="office-card-icon">⚖️</div>
+                    <div class="office-card-title">Office of the Provincial Legal Officer (OPLO)</div>
+                </div>
+                <div class="contact-info">
+                    <p><span class="label-icon">🏢</span> Provincial Capitol Building, Trece Martires City</p>
+                    <!-- Phone numbers wrapped in a clickable light blue button -->
+                    <a href="tel:0464191919,,130" class="contact-button tel-button">
+                        <span class="label-icon">📞</span> (046) 419-1919 loc 130 / 419-0492
+                    </a>
+                    <!-- Email wrapped in a clickable light green button -->
+                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=oplo.cavite@gmail.com" target="_blank" class="contact-button email-button">
+                        <span class="label-icon">✉️</span> oplo.cavite@gmail.com
+                    </a>
+                </div>
+            </div>
+
+            <div class="office-card">
+                <div>
+                    <div class="office-card-icon">📰</div>
+                    <div class="office-card-title">Office of the Provincial Information Officer</div>
+                </div>
+                <div class="contact-info">
+                    <p><span class="label-icon">🏢</span> 2/F Provincial Capitol Building, Trece Martires City</p>
+                    <!-- Phone number with extension wrapped in a clickable light blue button -->
+                    <a href="tel:0464191919,,119" class="contact-button tel-button">
+                        <span class="label-icon">📞</span> (046) 419-1919 loc. 119
+                    </a>
+                </div>
+            </div>
+
+            <div class="office-card">
+                <div>
+                    <div class="office-card-icon">🔗</div>
+                    <div class="office-card-title">Office of the Provincial Cooperatives Development Officer</div>
+                </div>
+                <div class="contact-info">
+                    <p><span class="label-icon">🏢</span> CaCoDeC, Capitol Road, Trece Martires City</p>
+                    <!-- Phone number wrapped in a clickable light blue button -->
+                    <a href="tel:0464191273" class="contact-button tel-button">
+                        <span class="label-icon">📞</span> (046) 419-1273
+                    </a>
+                </div>
+            </div>
+
+            <div class="office-card">
+                <div>
+                    <div class="office-card-icon">✅</div>
+                    <div class="office-card-title">Cavite Quality Management Office (CQMO)</div>
+                </div>
+                <div class="contact-info">
+                    <p><span class="label-icon">🏢</span> Provincial Capitol Building, Trece Martires City</p>
+                    <!-- Phone number wrapped in a clickable light blue button -->
+                    <a href="tel:0464604223" class="contact-button tel-button">
+                        <span class="label-icon">📞</span> (046) 460-4223
+                    </a>
+                    <!-- Email wrapped in a clickable light green button -->
+                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=cqmo.cavite@yahoo.com" target="_blank" class="contact-button email-button">
+                        <span class="label-icon">✉️</span> cqmo_cavite@yahoo.com
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- SECTION III: Finance & Procurement -->
+        <h3 class="section-title">III. Finance & Procurement</h3>
+        <div class="card-grid">
+
+            <div class="office-card">
+                <div>
+                    <div class="office-card-icon">💰</div>
+                    <div class="office-card-title">Provincial Treasurer's Office</div>
+                </div>
+                <div class="contact-info">
+                    <p><span class="label-icon">🏢</span> Finance Building, Trece Martires City</p>
+                    <!-- Phone numbers/loc wrapped in a clickable light blue button -->
+                    <a href="tel:0464193390" class="contact-button tel-button">
+                        <span class="label-icon">📞</span> (046) 419-3390 loc. 124, 138, 176 & 193
+                    </a>
+                </div>
+            </div>
+
+            <div class="office-card">
+                <div>
+                    <div class="office-card-icon">📍</div>
+                    <div class="office-card-title">Provincial Assessor's Office</div>
+                </div>
+                <div class="contact-info">
+                    <p><span class="label-icon">🏢</span> Finance Building, Trece Martires City</p>
+                    <!-- Phone numbers/loc wrapped in a clickable light blue button -->
+                    <a href="tel:0464193390" class="contact-button tel-button">
+                        <span class="label-icon">📞</span> (046) 419-3390 loc. 121, 171, & 188
+                    </a>
+                </div>
+            </div>
+
+            <div class="office-card">
+                <div>
+                    <div class="office-card-icon">🧮</div>
+                    <div class="office-card-title">Office of the Provincial Accountant</div>
+                </div>
+                <div class="contact-info">
+                    <p><span class="label-icon">🏢</span> Finance Building, Trece Martires City</p>
+                    <!-- Phone numbers/loc wrapped in a clickable light blue button -->
+                    <a href="tel:0464193390" class="contact-button tel-button">
+                        <span class="label-icon">📞</span> (046) 419-3390 loc. 179, 177 & 191
+                    </a>
+                </div>
+            </div>
+
+            <div class="office-card">
+                <div>
+                    <div class="office-card-icon">📈</div>
+                    <div class="office-card-title">Office of the Provincial Budget Officer</div>
+                </div>
+                <div class="contact-info">
+                    <p><span class="label-icon">🏢</span> Finance Building, Trece Martires City</p>
+                    <!-- Phone numbers/loc wrapped in a clickable light blue button -->
+                    <a href="tel:0464193390" class="contact-button tel-button">
+                        <span class="label-icon">📞</span> (046) 419-3390 loc. 143, 173 & 187
+                    </a>
+                </div>
+            </div>
+
+            <div class="office-card">
+                <div>
+                    <div class="office-card-icon">🏷️</div>
+                    <div class="office-card-title">Bids and Awards Committee (BAC)</div>
+                </div>
+                <div class="contact-info">
+                    <p><span class="label-icon">🏢</span> Provincial Capitol Building, Trece Martires City</p>
+                    <!-- Phone number wrapped in a clickable light blue button -->
+                    <a href="tel:0464191181" class="contact-button tel-button">
+                        <span class="label-icon">📞</span> (046) 419-1181
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- SECTION IV: Development & Infrastructure -->
+        <h3 class="section-title">IV. Development & Infrastructure</h3>
+        <div class="card-grid">
+
+            <div class="office-card">
+                <div>
+                    <div class="office-card-icon">📊</div>
+                    <div class="office-card-title">Provincial Planning & Development Coordinator</div>
+                </div>
+                <div class="contact-info">
+                    <p><span class="label-icon">🏢</span> 2/F Provincial Capitol Bldg., Trece Martires City</p>
+                    <!-- Phone number wrapped in a clickable light blue button -->
+                    <a href="tel:0464191469" class="contact-button tel-button">
+                        <span class="label-icon">📞</span> (046) 419-1469
+                    </a>
+                </div>
+            </div>
+
+            <div class="office-card">
+                <div>
+                    <div class="office-card-icon">👷</div>
+                    <div class="office-card-title">Provincial Engineering Office (PEO)</div>
+                </div>
+                <div class="contact-info">
+                    <p><span class="label-icon">🏢</span> PEO Building, Trece Martires City</p>
+                    <!-- Phone numbers wrapped in a clickable light blue button -->
+                    <a href="tel:0464190387" class="contact-button tel-button">
+                        <span class="label-icon">📞</span> (046) 419-0387 / 419-2071
+                    </a>
+                </div>
+            </div>
+
+            <div class="office-card">
+                <div>
+                    <div class="office-card-icon">📦</div>
+                    <div class="office-card-title">Office of the General Services Officer (GSO)</div>
+                </div>
+                <div class="contact-info">
+                    <p><span class="label-icon">🏢</span> GSO Building, Trece Martires City</p>
+                    <!-- Phone numbers/loc wrapped in a clickable light blue button -->
+                    <a href="tel:0464191919,,115" class="contact-button tel-button">
+                        <span class="label-icon">📞</span> (046) 419-1919 loc. 115 & 116
+                    </a>
+                </div>
+            </div>
+
+            <div class="office-card">
+                <div>
+                    <div class="office-card-icon">💻</div>
+                    <div class="office-card-title">Provincial Information and Communications Technology Office</div>
+                </div>
+                <div class="contact-info">
+                    <p><span class="label-icon">🏢</span> 2/F Provincial Capitol Bldg., Trece Martires City</p>
+                    <!-- Phone number wrapped in a clickable light blue button -->
+                    <a href="tel:0464190157" class="contact-button tel-button">
+                        <span class="label-icon">📞</span> (046) 419-0157
+                    </a>
+                </div>
+            </div>
+
+            <div class="office-card">
+                <div>
+                    <div class="office-card-icon">🏠</div>
+                    <div class="office-card-title">Provincial Housing Development and Management Office</div>
+                </div>
+                <div class="contact-info">
+                    <p><span class="label-icon">🏢</span> Provincial Capitol Building, Trece Martires City</p>
+                    <!-- Phone number wrapped in a clickable light blue button -->
+                    <a href="tel:0464192689" class="contact-button tel-button">
+                        <span class="label-icon">📞</span> (046) 419-2689
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- SECTION V: Health & Social Services -->
+        <h3 class="section-title">V. Health & Social Services</h3>
+        <div class="card-grid">
+
+            <div class="office-card">
+                <div>
+                    <div class="office-card-icon">➕</div>
+                    <div class="office-card-title">Office of the Provincial Health Officer</div>
+                </div>
+                <div class="contact-info">
+                    <p><span class="label-icon">🏢</span> Barangay Luciano, Trece Martires City</p>
+                    <!-- Phone numbers wrapped in a clickable light blue button -->
+                    <a href="tel:0464190123" class="contact-button tel-button">
+                        <span class="label-icon">📞</span> (046) 419-0123 / 419-0124
+                    </a>
+                    <p><strong>Affiliated Hospital:</strong> General Emilio Aguinaldo Memorial Hospital</p>
+                    <!-- Hospital Phone number wrapped in a clickable light blue button -->
+                    <p class="mt-2"><strong>Affiliated Hospital:</strong> Korean-Philippines Friendship Hospital</p>
+                    <a href="tel:0464191714" class="contact-button tel-button">
+                        <span class="label-icon">📞</span> (046) 419-1714
+                    </a>
+                </div>
+            </div>
+
+            <div class="office-card">
+                <div>
+                    <div class="office-card-icon">🧠</div>
+                    <div class="office-card-title">Cavite Center for Mental Health</div>
+                </div>
+                <div class="contact-info">
+                    <p><span class="label-icon">🏢</span> #038 Indang-Trece Road Brgy. Luciano, Trece Martires City</p>
+                    <p><span class="label-icon">📞</span> (Contact details N/A)</p>
+                </div>
+            </div>
+
+            <div class="office-card">
+                <div>
+                    <div class="office-card-icon">🫶</div>
+                    <div class="office-card-title">Provincial Social Welfare and Development Officer</div>
+                </div>
+                <div class="contact-info">
+                    <p><span class="label-icon">🏢</span> Provincial Capitol Compound, Trece Martires City</p>
+                    <!-- Phone numbers wrapped in a clickable light blue button -->
+                    <a href="tel:0464190252" class="contact-button tel-button">
+                        <span class="label-icon">📞</span> (046) 419-0252 / 419-2132
+                    </a>
+                </div>
+            </div>
+
+            <div class="office-card">
+                <div>
+                    <div class="office-card-icon">👥</div>
+                    <div class="office-card-title">Office of the Provincial Population Officer</div>
+                </div>
+                <div class="contact-info">
+                    <p><span class="label-icon">🏢</span> Provincial Capitol Building, Trece Martires City</p>
+                    <!-- Phone number wrapped in a clickable light blue button -->
+                    <a href="tel:0464192784" class="contact-button tel-button">
+                        <span class="label-icon">📞</span> (046) 419-2784
+                    </a>
+                </div>
+            </div>
+
+            <div class="office-card">
+                <div>
+                    <div class="office-card-icon">👨‍💼</div>
+                    <div class="office-card-title">Office of the Provincial Human Resource Management Officer</div>
+                </div>
+                <div class="contact-info">
+                    <p><span class="label-icon">🏢</span> Provincial Capitol Building, Trece Martires City</p>
+                    <!-- Phone number wrapped in a clickable light blue button -->
+                    <a href="tel:0464192930" class="contact-button tel-button">
+                        <span class="label-icon">📞</span> (046) 419-2930
+                    </a>
+                </div>
+            </div>
+            
+            <div class="office-card">
+                <div>
+                    <div class="office-card-icon">💼</div>
+                    <div class="office-card-title">OPG - Public Employment Service Manager (PESM)</div>
+                </div>
+                <div class="contact-info">
+                    <p><span class="label-icon">🏢</span> Provincial Capitol Building, Trece Martires City</p>
+                    <!-- Phone number wrapped in a clickable light blue button -->
+                    <a href="tel:0464191760" class="contact-button tel-button">
+                        <span class="label-icon">📞</span> (046) 419-1760
+                    </a>
+                </div>
+            </div>
+            
+            <div class="office-card">
+                <div>
+                    <div class="office-card-icon">♿</div>
+                    <div class="office-card-title">OPG - Persons with Disability Affairs Officer (PPDAO)</div>
+                </div>
+                <div class="contact-info">
+                    <p><span class="label-icon">🏢</span> Provincial Capitol Building, Trece Martires City</p>
+                    <p><span class="label-icon">📞</span> (Contact details N/A)</p>
+                    <!-- Email wrapped in a clickable light green button -->
+                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=ppdao_cavite@yahoo.com" target="_blank" class="contact-button email-button">
+                        <span class="label-icon">✉️</span> ppdao_cavite@yahoo.com
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- SECTION VI: Community & Sectoral Development -->
+        <h3 class="section-title">VI. Community & Sectoral Development</h3>
+        <div class="card-grid">
+
+            <div class="office-card">
+                <div>
+                    <div class="office-card-icon">🎓</div>
+                    <div class="office-card-title">OPG - Provincial Youth Development Officer</div>
+                </div>
+                <div class="contact-info">
+                    <p><span class="label-icon">🏢</span> Provincial Capitol Building, Trece Martires City</p>
+                    <!-- Phone number with extension wrapped in a clickable light blue button -->
+                    <a href="tel:0464190759,,146" class="contact-button tel-button">
+                        <span class="label-icon">📞</span> (046) 419-0759 loc 146
+                    </a>
+                </div>
+            </div>
+
+            <div class="office-card">
+                <div>
+                    <div class="office-card-icon">📸</div>
+                    <div class="office-card-title">Office of the Provincial Tourism Officer</div>
+                </div>
+                <div class="contact-info">
+                    <p><span class="label-icon">🏢</span> 2F Provincial Capitol Building, Trece Martires City 4109</p>
+                    <!-- Phone number wrapped in a clickable light blue button -->
+                    <a href="tel:0464194357" class="contact-button tel-button">
+                        <span class="label-icon">📞</span> (046) 419-4357
+                    </a>
+                </div>
+            </div>
+
+            <div class="office-card">
+                <div>
+                    <div class="office-card-icon">📚</div>
+                    <div class="office-card-title">Provincial Library</div>
+                </div>
+                <div class="contact-info">
+                    <p><span class="label-icon">🏢</span> Legislative Building, Trece Martires City</p>
+                    <!-- Phone number wrapped in a clickable light blue button -->
+                    <a href="tel:0464191402" class="contact-button tel-button">
+                        <span class="label-icon">📞</span> (046) 419-1402
+                    </a>
+                </div>
+            </div>
+
+            <div class="office-card">
+                <div>
+                    <div class="office-card-icon">🌱</div>
+                    <div class="office-card-title">Office of the Provincial Agriculturist</div>
+                </div>
+                <div class="contact-info">
+                    <p><span class="label-icon">🏢</span> OPA Compound, Trece Martires City</p>
+                    <!-- Phone number wrapped in a clickable light blue button -->
+                    <a href="tel:0464192503" class="contact-button tel-button">
+                        <span class="label-icon">📞</span> (046) 419-2503
+                    </a>
+                </div>
+            </div>
+
+            <div class="office-card">
+                <div>
+                    <div class="office-card-icon">🐾</div>
+                    <div class="office-card-title">Office of the Provincial Veterinarian</div>
+                </div>
+                <div class="contact-info">
+                    <p><span class="label-icon">🏢</span> Provincial Capitol Compound, Trece Martires City</p>
+                    <!-- Phone number wrapped in a clickable light blue button -->
+                    <a href="tel:+63464192008" class="contact-button tel-button">
+                        <span class="label-icon">📞</span> (+63 46) 419-2008
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- SECTION VII: Economic, Environment & Safety -->
+        <h3 class="section-title">VII. Economic, Environment & Safety</h3>
+        <div class="card-grid">
+
+            <div class="office-card">
+                <div>
+                    <div class="office-card-icon">📈</div>
+                    <div class="office-card-title">Local Economic Development and Investment Promotions Office (LEDIPO)</div>
+                </div>
+                <div class="contact-info">
+                    <p><span class="label-icon">🏢</span> Ground Floor, Provincial Capitol Main Building</p>
+                    <!-- Phone number wrapped in a clickable light blue button -->
+                    <a href="tel:0464192311" class="contact-button tel-button">
+                        <span class="label-icon">📞</span> 046-419-2311
+                    </a>
+                </div>
+            </div>
+
+            <div class="office-card">
+                <div>
+                    <div class="office-card-icon">🌳</div>
+                    <div class="office-card-title">Provincial Environment and Natural Resources Officer (PENRO)</div>
+                </div>
+                <div class="contact-info">
+                    <p><span class="label-icon">🏢</span> Provincial Capitol Building, Trece Martires City</p>
+                    <!-- Phone number wrapped in a clickable light blue button -->
+                    <a href="tel:0464190916" class="contact-button tel-button">
+                        <span class="label-icon">📞</span> (046) 419-0916
+                    </a>
+                </div>
+            </div>
+
+            <div class="office-card">
+                <div>
+                    <div class="office-card-icon">🚨</div>
+                    <div class="office-card-title">Provincial Disaster Risk Reduction Management Officer (PDRRMO)</div>
+                </div>
+                <div class="contact-info">
+                    <p><span class="label-icon">🏢</span> Provincial Capitol Building, Trece Martires City</p>
+                    <!-- Phone numbers wrapped in a clickable light blue button. Multiple numbers linked to the first one. -->
+                    <a href="tel:0464191652" class="contact-button tel-button">
+                        <span class="label-icon">📞</span> (046) 419- 1652 / 0917 – 858 8263
+                    </a>
+                </div>
+            </div>
+
+            <div class="office-card">
+                <div>
+                    <div class="office-card-icon">🛡️</div>
+                    <div class="office-card-title">Cavite Office of Public Safety (COPS)</div>
+                </div>
+                <div class="contact-info">
+                    <p><span class="label-icon">🏢</span> Provincial Capitol Compound, Trece Martires City</p>
+                    <!-- Phone numbers wrapped in a clickable light blue button. Multiple numbers linked to the first one. -->
+                    <a href="tel:0468893931" class="contact-button tel-button">
+                        <span class="label-icon">📞</span> (046) 889-3931 / 0917-858-8263
+                    </a>
+                </div>
+            </div>
+
+            <div class="office-card">
+                <div>
+                    <div class="office-card-icon">🚦</div>
+                    <div class="office-card-title">Road Safety Division</div>
+                </div>
+                <div class="contact-info">
+                    <p><span class="label-icon">🏢</span> 3rd Floor OPG Building, Trece Martires City</p>
+                    <!-- Phone number wrapped in a clickable light blue button -->
+                    <a href="tel:0464109349" class="contact-button tel-button">
+                        <span class="label-icon">📞</span> (046) 410-9349
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- SECTION VIII: Security & Custodial Services -->
+        <h3 class="section-title">VIII. Security & Custodial Services</h3>
+        <div class="card-grid">
+
+            <div class="office-card">
+                <div>
+                    <div class="office-card-icon">⛓️</div>
+                    <div class="office-card-title">Cavite Provincial Jail</div>
+                </div>
+                <div class="contact-info">
+                    <p><span class="label-icon">🏢</span> Brgy. Lapidario, Trece Martires City</p>
+                    <!-- Phone number wrapped in a clickable light blue button -->
+                    <a href="tel:0464190481" class="contact-button tel-button">
+                        <span class="label-icon">📞</span> (046) 419-0481
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+<script>
+    function goBack() {
+        // Change 'home.html' to the actual filename of your main page/menu
+        window.location.href = 'home.html'; 
+    }
+</script>
+<script>
+(function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="zs4YG_wfj-uDAcShcPo8g";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
+</script>
+
+</body>
+</html>

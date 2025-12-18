@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emergency Guide</title>
+    <link rel="stylesheet" href="DG.css">
+    
+    <script>
+        // JavaScript function to toggle the detailed guide section for the *specific* card clicked
+        function toggleDetails(button) {
+            //  Find the closest parent element with the class 'flashcard'
+            const flashcard = button.closest('.flashcard');
+            const rightSection = flashcard.querySelector('.flashcard-right');
+            
+            //  Toggle the visibility class for the detail section
+            rightSection.classList.toggle('hidden');
+
+            // Check the visibility and set the data-state attribute.
+            // This is crucial for triggering the CSS tilt, glow, and pastel background.
+            const isHidden = rightSection.classList.contains('hidden');
+            if (isHidden) {
+                flashcard.removeAttribute('data-state'); // Remove attribute to return to normal state
+                button.textContent = 'View Full Guide';
+            } else {
+                flashcard.setAttribute('data-state', 'expanded'); // Set attribute to trigger CSS
+                button.textContent = 'Hide Details';
+            }
+        }
+    </script>
+
+</head>
+<body>
+    <div class="header-wrapper"> 
+        <header class="emergency-header">
+            <button class="main-page-btn" onclick="goBack()">
+                &#8592; Back to Main Page
+            </button>
+            <div class="container">
+                <h2>Emergency Preparedness Guide</h2>
+                <p>Your comprehensive guide to essential actions before, during, and after various calamities. Learn about preparedness, immediate responses, and recovery strategies for different hazards in the province.</p>
+            </div>
+        </header>
+    </div>
+    <div class="flashcard-wrapper"></div>
+
+<!-- Flashcard Container Wrapper (Added to handle the grid properly) -->
+<div class="flashcard-wrapper">
+    <div class="flashcard">
+        <div class="flashcard-left">
+            <div class="calamity-header">
+                <div class="calamity-icon">🌪️</div>
+                <div class="calamity-title">Typhoon</div>
+            </div>
+            <p class="short-description">
+                A powerful tropical cyclone that generates extreme sustained winds, heavy rainfall, and dangerous storm surges. It poses a severe threat by causing widespread flooding, landslides, uprooted trees, and structural damage to buildings, frequently resulting in major power and communication outages.
+            </p>
+            <button class="view-details-btn" onclick="toggleDetails(this)">View Full Guide</button>
+        </div>
+
+        <div class="flashcard-right hidden">
+            <div class="details-section">
+                <h4>Before</h4>
+                <ul>
+                    <li>Secure doors and windows</li>
+                    <li>Prepare food, water, and medicine</li>
+                    <li>Charge power banks and phones</li>
+                </ul>
+            </div>
+          
+            <div class="details-section">
+                <h4>What to Expect</h4>
+                <ul>
+                    <li>Rapidly rising floodwaters.</li>
+                    <li>Severe damage to roofs and infrastructure.</li>
+                    <li>Prolonged power and water outages.</li>
+                </ul>
+            </div>
+           
+            <div class="details-section">
+                <h4>What to Bring</h4>
+                <ul>
+                    <li>Battery-powered radio and flashlight.</li>
+                    <li>Whistle for signaling.</li>
+                    <li>Minimum three days of non-perishable food.</li>
+                </ul>
+            </div>
+            <div class="details-section">
+                <h4>During</h4>
+                <ul>
+                    <li>Stay indoors and away from windows</li>
+                    <li>Do not go outside during strong winds</li>
+                    <li>Listen to official announcements</li>
+                </ul>
+            </div>
+            <div class="details-section">
+                <h4>After</h4>
+                <ul>
+                    <li>Check for damages and leaks</li>
+                    <li>Avoid floodwater and fallen wires</li>
+                    <li>Help others if safe</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="flashcard">
+        <div class="flashcard-left">
+            <div class="calamity-header">
+                <div class="calamity-icon">🌎</div>
+                <div class="calamity-title">Earthquake</div>
+            </div>
+            <p class="short-description">
+                A sudden, violent shaking of the ground, caused by the movement of tectonic plates. Earthquakes can cause severe ground rupture, liquefaction, landslides, and trigger devastating fires and tsunamis. Immediate hazards include falling debris, shattered glass, and structural collapse of buildings.
+            </p>
+            <button class="view-details-btn" onclick="toggleDetails(this)">View Full Guide</button>
+        </div>
+
+        <div class="flashcard-right hidden">
+            <div class="details-section">
+                <h4>Before</h4>
+                <ul>
+                    <li>Secure heavy furniture</li>
+                    <li>Know safe spots in your area</li>
+                    <li>Prepare emergency supplies</li>
+                </ul>
+            </div>
+           
+            <div class="details-section">
+                <h4>What to Expect</h4>
+                <ul>
+                    <li>Violent, rapid ground shaking.</li>
+                    <li>Frequent, unpredictable aftershocks.</li>
+                    <li>Gas leaks and broken utility lines.</li>
+                </ul>
+            </div>
+           
+            <div class="details-section">
+                <h4>What to Bring</h4>
+                <ul>
+                    <li>First aid kit and essential medications.</li>
+                    <li>Sturdy shoes and protective gear.</li>
+                    <li>Water for 72 hours (3 days).</li>
+                </ul>
+            </div>
+            <div class="details-section">
+                <h4>During</h4>
+                <ul>
+                    <li>Drop, Cover, and Hold</li>
+                    <li>Move away from glass and shelves</li>
+                    <li>Stay calm and protect your head</li>
+                </ul>
+            </div>
+            <div class="details-section">
+                <h4>After</h4>
+                <ul>
+                    <li>Check for injuries</li>
+                    <li>Turn off gas if leaking</li>
+                    <li>Expect aftershocks</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="flashcard">
+        <div class="flashcard-left">
+            <div class="calamity-header">
+                <div class="calamity-icon">🌊</div>
+                <div class="calamity-title">Flood</div>
+            </div>
+            <p class="short-description">
+                An inundation of normally dry land caused by persistent heavy rain, overflowing rivers, or drainage system failure. Floods are extremely dangerous due to fast currents, contaminated waters, and hidden debris, leading to the destruction of property, disruption of transport, and risk of waterborne diseases.
+            </p>
+            <button class="view-details-btn" onclick="toggleDetails(this)">View Full Guide</button>
+        </div>
+
+        <div class="flashcard-right hidden">
+            <div class="details-section">
+                <h4>Before</h4>
+                <ul>
+                    <li>Move valuables to higher places</li>
+                    <li>Prepare emergency kit</li>
+                    <li>Know evacuation routes</li>
+                </ul>
+            </div>
+           
+            <div class="details-section">
+                <h4>What to Expect</h4>
+                <ul>
+                    <li>Swiftly rising, opaque water levels.</li>
+                    <li>Road closures and impassable areas.</li>
+                    <li>Loss of communication services.</li>
+                </ul>
+            </div>
+         
+            <div class="details-section">
+                <h4>What to Bring</h4>
+                <ul>
+                    <li>Waterproof bag for documents.</li>
+                    <li>Clean drinking water and purification tablets.</li>
+                    <li>Rubber boots and rain gear.</li>
+                </ul>
+            </div>
+            <div class="details-section">
+                <h4>During</h4>
+                <ul>
+                    <li>Go to higher ground</li>
+                    <li>Avoid walking in floodwater</li>
+                    <li>Listen to authorities</li>
+                </ul>
+            </div>
+            <div class="details-section">
+                <h4>After</h4>
+                <ul>
+                    <li>Disinfect your surroundings</li>
+                    <li>Check for structural damage</li>
+                    <li>Boil drinking water</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="flashcard">
+        <div class="flashcard-left">
+            <div class="calamity-header">
+                <div class="calamity-icon">⛰️</div>
+                <div class="calamity-title">Landslide</div>
+            </div>
+            <p class="short-description">
+                The swift downward movement of rock, soil, or debris under the influence of gravity, often triggered by intense rainfall or seismic activity. Landslides are highly destructive, burying anything in their path, including roads, homes, and critical infrastructure, and can occur with little to no warning in susceptible areas.
+            </p>
+            <button class="view-details-btn" onclick="toggleDetails(this)">View Full Guide</button>
+        </div>
+
+        <div class="flashcard-right hidden">
+            <div class="details-section">
+                <h4>Before</h4>
+                <ul>
+                    <li>Avoid staying near steep slopes</li>
+                    <li>Plant trees on bare soil</li>
+                    <li>Observe warning signs</li>
+                </ul>
+            </div>
+            
+            <div class="details-section">
+                <h4>What to Expect</h4>
+                <ul>
+                    <li>Sudden, fast-moving flows of mud and debris.</li>
+                    <li>Blocked roads and severed utility lines.</li>
+                    <li>Loud rumbling or grinding sounds.</li>
+                </ul>
+            </div>
+          
+            <div class="details-section">
+                <h4>What to Bring</h4>
+                <ul>
+                    <li>Personal protective equipment (gloves, helmet).</li>
+                    <li>Rope or strong cord.</li>
+                    <li>Emergency food and water.</li>
+                </ul>
+            </div>
+            <div class="details-section">
+                <h4>During</h4>
+                <ul>
+                    <li>Move away immediately</li>
+                    <li>Run to higher ground</li>
+                    <li>Protect your head</li>
+                </ul>
+            </div>
+            <div class="details-section">
+                <h4>After</h4>
+                <ul>
+                    <li>Do not return immediately</li>
+                    <li>Watch for secondary slides</li>
+                    <li>Report damaged areas</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="flashcard">
+        <div class="flashcard-left">
+            <div class="calamity-header">
+                <div class="calamity-icon">🔥</div>
+                <div class="calamity-title">Fire</div>
+            </div>
+            <p class="short-description">
+                An uncontrolled combustion that threatens life and property, particularly dangerous in dense urban areas where it can spread rapidly between structures. Urban fires are characterized by extreme heat, heavy smoke, and potential explosion risks from gas or stored chemicals, necessitating rapid evacuation and professional firefighting response.
+            </p>
+            <button class="view-details-btn" onclick="toggleDetails(this)">View Full Guide</button>
+        </div>
+
+        <div class="flashcard-right hidden">
+            <div class="details-section">
+                <h4>Before</h4>
+                <ul>
+                    <li>Check electrical wiring</li>
+                    <li>Have fire extinguisher ready</li>
+                    <li>Avoid overloading outlets</li>
+                </ul>
+            </div>
+            
+            <div class="details-section">
+                <h4>What to Expect</h4>
+                <ul>
+                    <li>Thick, toxic smoke and heat.</li>
+                    <li>Rapid structural damage and collapse risk.</li>
+                    <li>Emergency service response and evacuation orders.</li>
+                </ul>
+            </div>
+           
+            <div class="details-section">
+                <h4>What to Bring</h4>
+                <ul>
+                    <li>Smoke masks or damp cloths.</li>
+                    <li>Small fire extinguisher (if trained to use).</li>
+                    <li>Keys and essential documents.</li>
+                </ul>
+            </div>
+            <div class="details-section">
+                <h4>During</h4>
+                <ul>
+                    <li>Stay low to avoid smoke</li>
+                    <li>Use exits, not elevators</li>
+                    <li>Call emergency hotline</li>
+                </ul>
+            </div>
+            <div class="details-section">
+                <h4>After</h4>
+                <ul>
+                    <li>Do not re-enter the building</li>
+                    <li>Seek medical help if needed</li>
+                    <li>Wait for clearance</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="flashcard">
+        <div class="flashcard-left">
+            <div class="calamity-header">
+                <div class="calamity-icon">🌊</div>
+                <div class="calamity-title">Tsunami</div>
+            </div>
+            <p class="short-description">
+                A series of powerful, large waves generated by an underwater disturbance, typically an earthquake, volcano, or landslide. Tsunami waves travel across the ocean at high speed and strike coastal regions with immense force, causing widespread flooding, erosion, and devastation that can extend far inland.
+            </p>
+            <button class="view-details-btn" onclick="toggleDetails(this)">View Full Guide</button>
+        </div>
+
+        <div class="flashcard-right hidden">
+            <div class="details-section">
+                <h4>Before</h4>
+                <ul>
+                    <li>Move to higher ground quickly</li>
+                    <li>Know warning signs</li>
+                    <li>Prepare emergency kit</li>
+                </ul>
+            </div>
+           
+            <div class="details-section">
+                <h4>What to Expect</h4>
+                <ul>
+                    <li>A sudden, significant recession of the ocean (drawdown).</li>
+                    <li>A rapid succession of massive waves.</li>
+                    <li>Strong currents carrying heavy debris.</li>
+                </ul>
+            </div>
+           
+            <div class="details-section">
+                <h4>What to Bring</h4>
+                <ul>
+                    <li>Life jacket or flotation device.</li>
+                    <li>Sturdy hiking boots.</li>
+                    <li>Map of local high ground/evacuation routes.</li>
+                </ul>
+            </div>
+            <div class="details-section">
+                <h4>During</h4>
+                <ul>
+                    <li>Stay away from the coast</li>
+                    <li>Follow evacuation routes</li>
+                    <li>Wait for all-clear</li>
+                </ul>
+            </div>
+            <div class="details-section">
+                <h4>After</h4>
+                <ul>
+                    <li>Avoid flooded areas</li>
+                    <li>Beware of debris</li>
+                    <li>Help injured people</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="flashcard">
+        <div class="flashcard-left">
+            <div class="calamity-header">
+                <div class="calamity-icon">☀️</div>
+                <div class="calamity-title">Drought</div>
+            </div>
+            <p class="short-description">
+                An extended period of unusually dry weather that persists long enough to cause severe ecological and economic damage, including water supply shortages, crop damage, and reduced power generation. Drought conditions significantly heighten the risk of severe wildfires and negatively impact public health and food security.
+            </p>
+            <button class="view-details-btn" onclick="toggleDetails(this)">View Full Guide</button>
+        </div>
+
+        <div class="flashcard-right hidden">
+            <div class="details-section">
+                <h4>Before</h4>
+                <ul>
+                    <li>Store clean water</li>
+                    <li>Fix leaking pipes</li>
+                    <li>Use water wisely</li>
+                </ul>
+            </div>
+          
+            <div class="details-section">
+                <h4>What to Expect</h4>
+                <ul>
+                    <li>Strict water rationing and usage limits.</li>
+                    <li>Increased risk of wild and urban fires.</li>
+                    <li>Strain on crop yield and food prices.</li>
+                </ul>
+            </div>
+           
+            <div class="details-section">
+                <h4>What to Bring</h4>
+                <ul>
+                    <li>Extra water storage containers (jerrycans).</li>
+                    <li>Water-saving fixtures and tools.</li>
+                    <li>Moisturizing cream and lip balm.</li>
+                </ul>
+            </div>
+            <div class="details-section">
+                <h4>During</h4>
+                <ul>
+                    <li>Limit water use</li>
+                    <li>Avoid wasting water</li>
+                    <li>Follow water schedules</li>
+                </ul>
+            </div>
+            <div class="details-section">
+                <h4>After</h4>
+                <ul>
+                    <li>Clean containers</li>
+                    <li>Continue conserving</li>
+                    <li>Report dry areas</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="flashcard">
+        <div class="flashcard-left">
+            <div class="calamity-header">
+                <div class="calamity-icon">🌋</div>
+                <div class="calamity-title">Volcanic Eruption</div>
+            </div>
+            <p class="short-description">
+                The venting of hot material—magma, ash, gas, and rock fragments—from a volcano's vent. Eruptions pose multiple hazards, including fast-moving pyroclastic flows, deadly mudflows (lahars), and thick ashfall that can contaminate water, damage aircraft, and cause breathing problems.
+            </p>
+            <button class="view-details-btn" onclick="toggleDetails(this)">View Full Guide</button>
+        </div>
+
+        <div class="flashcard-right hidden">
+            <div class="details-section">
+                <h4>Before</h4>
+                <ul>
+                    <li>Know evacuation zones</li>
+                    <li>Wear mask and goggles</li>
+                    <li>Prepare emergency supplies</li>
+                </ul>
+            </div>
+         
+            <div class="details-section">
+                <h4>What to Expect</h4>
+                <ul>
+                    <li>Heavy ashfall causing low visibility.</li>
+                    <li>Acid rain and sulfurous gas odors.</li>
+                    <li>Possible lahars (volcanic mudflows) in valleys.</li>
+                </ul>
+            </div>
+           
+            <div class="details-section">
+                <h4>What to Bring</h4>
+                <ul>
+                    <li>P3-rated respirator masks (or N95).</li>
+                    <li>Goggles or protective eyewear.</li>
+                    <li>Plastic sheeting and duct tape for sealing doors/windows.</li>
+                </ul>
+            </div>
+            <div class="details-section">
+                <h4>During</h4>
+                <ul>
+                    <li>Stay indoors</li>
+                    <li>Avoid river channels</li>
+                    <li>Follow official orders</li>
+                </ul>
+            </div>
+            <div class="details-section">
+                <h4>After</h4>
+                <ul>
+                    <li>Remove ash carefully</li>
+                    <li>Check roof stability</li>
+                    <li>Wait for clearance</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function goBack() {
+        // Change 'index.html' to the actual filename of your main page/menu
+        window.location.href = 'home.html'; 
+    }
+</script>
+<script>
+(function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="zs4YG_wfj-uDAcShcPo8g";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
+</script>
+</body>
+</html>

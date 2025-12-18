@@ -1,0 +1,231 @@
+         * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f4f7f6; 
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .page-wrapper {
+            max-width: 95%;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+
+        /* Back Button Style */
+        .back-btn {
+            background-color: #1FAA59;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: background 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            margin-bottom: 20px; 
+        }
+
+        .back-btn:hover { background-color: #1b5e20; }
+
+    
+        .glass-header {
+            background: rgba(220, 255, 220, 0.65); 
+            backdrop-filter: blur(12px); 
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 12px;
+            padding: 25px 30px 30px; 
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            animation: fadeInDown 0.8s ease-out;
+            margin: 0 10px 30px 10px;
+            
+            /* Layout for button and text */
+            display: flex;
+            flex-direction: column;
+            align-items: center; 
+        }
+        
+        /* Ensure button stays left */
+        .glass-header .back-btn {
+            align-self: flex-start;
+            margin-left: 0; 
+        }
+
+        .glass-header h1 {
+            color: #1FAA59;
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-align: center;
+        }
+        .glass-header p { 
+            color: #374151;
+            font-size: 1rem; 
+            max-width: 700px; 
+            margin: 0 auto; 
+            text-align: center;
+        }
+
+        /* --- MAIN GRID LAYOUT (Exact Spacing) --- */
+        .tables-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr; 
+            gap: 15px; 
+            padding: 0 10px;
+        }
+
+        /* --- TABLE STYLING --- */
+        .service-column {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: 600px; 
+            border-top: 5px solid; 
+        }
+
+        /* Specific Accent Colors */
+        .electric-col { border-color: #fbc02d; } 
+        .water-col { border-color: #0288d1; }    
+        .internet-col { border-color: #7b1fa2; } 
+
+        .col-header {
+            padding: 15px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.1rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .electric-col .col-header { background: #fffde7; color: #f57f17; }
+        .water-col .col-header { background: #e1f5fe; color: #0277bd; }
+        .internet-col .col-header { background: #f3e5f5; color: #7b1fa2; }
+
+        .table-scroll-wrapper {
+            overflow-y: auto; 
+            flex-grow: 1;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+            border: 1px solid #ddd; 
+        }
+
+        th, td {
+            padding: 10px; 
+            text-align: left;
+            border: 1px solid #ddd; 
+            vertical-align: top; 
+        }
+
+        th {
+            position: sticky;
+            top: 0;
+            background-color: #f9f9f9;
+            z-index: 2;
+            font-weight: 700;
+            color: #555;
+            box-shadow: 0 2px 2px rgba(0,0,0,0.03);
+            text-transform: uppercase;
+        }
+
+        /* District Divider Rows (Green and Formal) */
+        .district-row {
+            background-color: #e8f5e9; 
+            color: #1b5e20; 
+            font-weight: bold;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+        }
+        .district-row td { padding: 12px 10px; }
+
+
+        /* Links & Contacts Styling */
+        .contact-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        a.contact-link {
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+            padding: 5px 8px;
+            border-radius: 3px;
+            transition: all 0.2s;
+            display: inline-block;
+            text-align: center;
+            font-size: 0.8rem;
+            margin-top: 3px;
+        }
+
+        /* Telephone Link Specific Styling */
+        a.contact-call {
+            background-color: #dc3545; /* Red for Call/Emergency */
+            border: 1px solid #dc3545;
+        }
+        a.contact-call:hover {
+            background-color: #c82333;
+            border-color: #c82333;
+        }
+
+        /* Email Link Specific Styling */
+        a.contact-mail {
+            background-color: #007bff; /* Blue for Mail */
+            border: 1px solid #007bff;
+        }
+        a.contact-mail:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+
+        .email-display {
+            font-size: 0.8rem;
+            color: #555;
+            word-wrap: break-word;
+        }
+        
+        .contact-explanation {
+            font-size: 0.75rem;
+            color: #777;
+            margin-top: 10px;
+            padding: 10px;
+            border-top: 1px solid #eee;
+            background-color: #f9f9f9;
+            text-align: center;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 1024px) {
+            .tables-container {
+                grid-template-columns: 1fr; 
+                gap: 25px; 
+            }
+            .service-column {
+                height: auto; 
+                min-height: 400px;
+            }
+            .table-scroll-wrapper {
+                overflow-x: auto; 
+            }
+            table { min-width: 650px; }
+        }
+
+        /* --- ANIMATIONS (Modern Readiness) --- */
+        @keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
